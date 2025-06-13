@@ -1,0 +1,6 @@
+{
+  "name": "Copy of Copy of AI Learning Companion (Jeju Pharmacy)",
+  "description": "An AI-powered learning assistant for pharmacy students, featuring PDF-based quiz generation, incorrect answer analysis, AI learning tools, and file management. This version stores data locally and uses the Gemini API for AI features.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
