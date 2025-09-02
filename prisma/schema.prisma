@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserProfile {
+  id        String   @id @default(cuid())
+  ageBand   String?
+  sex       String?
+  pregnant  Boolean  @default(false)
+  allergies String[] @default([])
+  chronic   String[] @default([])
+  meds      String[] @default([])
+  createdAt DateTime @default(now())
+}
+
+model EnvSnapshot {
+  id        String   @id @default(cuid())
+  region    String
+  date      DateTime
+  horizon   String
+  tAvg      Float?
+  tMax      Float?
+  tMin      Float?
+  rainProb  Int?
+  uvIndex   Int?
+  pm25      Int?
+  humidity  Int?
+  windMs    Float?
+  source    String?
+  issuedAt  DateTime?
+  lat       Float
+  lon       Float
+  createdAt DateTime @default(now())
+  @@index([region, date])
+  @@index([lat, lon, date])
+}
+
+model Recommendation {
+  id        String   @id @default(cuid())
+  userId    String?
+  date      DateTime
+  region    String
+  risksJson Json
+  itemsJson Json
+  warnings  Json
+  createdAt DateTime @default(now())
+}
